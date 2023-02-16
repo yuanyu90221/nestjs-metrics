@@ -15,4 +15,4 @@ RUN yarn install --production=true --frozen-lockfile
 COPY . .
 COPY --from=dev /usr/src/app/dist ./dist
 USER node
-CMD [ "node" "dist/main" ]
+CMD [ "node", "dist/main" ]

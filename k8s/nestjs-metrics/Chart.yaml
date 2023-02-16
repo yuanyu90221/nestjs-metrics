@@ -1,30 +1,3 @@
-# nestjs-metric
-
-This is sample use prometheus with nestjs
-
-use [nestjs-prometheus module](https://github.com/willsoto/nestjs-prometheus)
-
-## create project
-
-```shell=
-nest new nestjs-metrics
-```
-## install related module
-
-```shell=
-yarn add @willsoto/nestjs-prometheus prom-client
-```
-
-## install with helm
-
-```shell=
-helm create nestjs-metrics
-```
-
-go to https://artifacthub.io/ find grafana and prothemeus
-
-## setup chart
-```yaml
 apiVersion: v2
 name: nestjs-metrics
 description: A Helm chart for Kubernetes
@@ -56,32 +29,3 @@ dependencies:
   - name: grafana
     version: '6.43.5'
     repository: 'https://grafana.github.io/helm-charts'
-```
-## override default setup
-
-```yaml
-prometheus:
-  alertmanager:
-    enabled: false
-  pushgateway:
-    enabled: false
-  nodeExporter:
-    enabled: false
-
-grafana:
-  service:
-    type: NodePort
-```
-
-## install
-
-```shell
-cd k8s/nestjs-metrics
-helm dependency update
-helm install nestjs-metrics .
-```
-
-## cleanup install
-```shell
-helm uninstall nestjs-metrics
-```
